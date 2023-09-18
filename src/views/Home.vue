@@ -103,6 +103,12 @@ export default {
 
 <style scoped lang="postcss">
 section {
+  height: 100vh;
+
+  @media screen and (min-height: 1000px) {
+    height: 800px;
+  }
+
   display: grid;
   text-align: center;
   align-content: center;

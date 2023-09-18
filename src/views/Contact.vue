@@ -48,6 +48,8 @@
 section {
   max-width: 1000px;
   margin-inline: auto;
+
+  padding: 1rem;
 }
 
 section > div {

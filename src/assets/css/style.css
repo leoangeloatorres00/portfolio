@@ -16,10 +16,6 @@ section {
   padding: 2rem;
 }
 
-section:nth-of-type(1) {
-  height: 100vh;
-}
-
 section:nth-of-type(odd) {
   background: #18191a;
 
