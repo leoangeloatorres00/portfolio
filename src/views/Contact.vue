@@ -35,9 +35,15 @@
         </p>
 
         <ul>
-          <li>Address : <span>Candelaria, Quezon</span></li>
-          <li>Email : <span>sample@example.com</span></li>
-          <li>Mobile Number: <span>+63912-345-6789</span></li>
+          <li>
+            Address :
+            <span
+              >772 Bustamante St. Brgy. Poblacion, Candelaria, Quezon,
+              4323</span
+            >
+          </li>
+          <li>Email : <span>leoangeloatorres00@gmail.com</span></li>
+          <li>Mobile Number: <span>+63927-274-4900</span></li>
         </ul>
       </div>
     </div>
