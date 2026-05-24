@@ -48,9 +48,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deployment to Server
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deployment to Server via SSH
         if: github.ref == 'refs/heads/main'
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username:  ${{ secrets.SSH_USER }}
