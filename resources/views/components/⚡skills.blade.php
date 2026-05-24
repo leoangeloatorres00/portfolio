@@ -81,6 +81,8 @@ new class extends Component
         </div>
     </div>
 </section>
+
+@script
 <script>
     const section = document.querySelector("#skills");
     const progressBars = document.querySelectorAll(".skill-progress");
@@ -103,3 +105,4 @@ new class extends Component
 
     observer.observe(section);
 </script>
+@endscript

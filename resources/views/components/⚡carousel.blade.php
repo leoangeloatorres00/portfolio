@@ -4,11 +4,7 @@ use Livewire\Component;
 
 new class extends Component
 {
-    #[Prop]
-    public string $count;
-
-    #[Prop]
-    public string $projects;
+  // 
 };
 ?>
 
@@ -32,6 +28,7 @@ new class extends Component
     </button>
 </div>
 
+@script
 <script>
   let images = [];
 
@@ -83,3 +80,4 @@ new class extends Component
     if (e.target === modal) window.closeCarousel();
   });
 </script>
+@endscript
