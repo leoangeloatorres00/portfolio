@@ -7,38 +7,7 @@ new class extends Component
     //
 };
 ?>
-@script
-<script>
-    window.openModal = function() {
-        const modal = document.getElementById('contactModal');
-
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-
-        document.body.style.overflow = 'hidden';
-    }
-
-    window.closeModal = function() {
-        const modal = document.getElementById('contactModal');
-
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-
-        document.body.style.overflow = 'auto';
-    }
-
-    window.addEventListener('click', function (e) {
-        const modal = document.getElementById('contactModal');
-
-        if (e.target === modal) {
-            window.closeModal();
-        }
-    });
-</script>
-@endscript
-
 <div id="contactModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
-
     <div class="bg-white w-[90%] max-w-lg rounded-2xl p-8 relative">
         <button onclick="closeModal()" class="absolute top-5 right-5 text-3xl text-slate-400 hover:text-black">
             &times;
@@ -68,4 +37,34 @@ new class extends Component
             </button>
         </form>
     </div>
+    
+    @script
+    <script>
+        window.openModal = function() {
+            const modal = document.getElementById('contactModal');
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.closeModal = function() {
+            const modal = document.getElementById('contactModal');
+
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('click', function (e) {
+            const modal = document.getElementById('contactModal');
+
+            if (e.target === modal) {
+                window.closeModal();
+            }
+        });
+    </script>
+    @endscript
 </div>
