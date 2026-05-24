@@ -7,7 +7,7 @@ new class extends Component
     //
 };
 ?>
-
+@script
 <script>
     window.openModal = function() {
         const modal = document.getElementById('contactModal');
@@ -35,7 +35,7 @@ new class extends Component
         }
     });
 </script>
-
+@endscript
 
 <div id="contactModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
 
