@@ -80,29 +80,30 @@ new class extends Component
             </div>
         </div>
     </div>
+
+    @script
+    <script>
+        const section = document.querySelector("#skills");
+        const progressBars = document.querySelectorAll(".skill-progress");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    progressBars.forEach((bar) => {
+                        bar.style.width = bar.dataset.width;
+                    });
+                } else {
+                    progressBars.forEach((bar) => {
+                        bar.style.width = '0%';
+                    });
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        observer.observe(section);
+    </script>
+    @endscript
 </section>
 
-@script
-<script>
-    const section = document.querySelector("#skills");
-    const progressBars = document.querySelectorAll(".skill-progress");
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                progressBars.forEach((bar) => {
-                    bar.style.width = bar.dataset.width;
-                });
-            } else {
-                progressBars.forEach((bar) => {
-                    bar.style.width = '0%';
-                });
-            }
-        });
-    }, {
-        threshold: 0.3
-    });
-
-    observer.observe(section);
-</script>
-@endscript
