@@ -36,7 +36,7 @@ new class extends Component
                 <div>
                     <img src="{{ asset('images/gcash.png') }}" class="h-64 w-full object-cover" />
 
-                    <div class="p-6 pb-0">
+                    <div class="p-6 pb-0"> 
                         <h3 class="text-2xl font-bold mb-3">
                             GCash | eC-Savings
                         </h3>
