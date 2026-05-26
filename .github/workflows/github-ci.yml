@@ -35,13 +35,13 @@ jobs:
 
       - name: Update variables to .env
         run: |
-          sed -i "s/^APP_NAME=.*/APP_ENV=${{ secrets.APP_NAME }}/" .env
+          sed -i "s/^APP_NAME=.*/APP_NAME=${{ secrets.APP_NAME }}/" .env
           sed -i "s/^DB_CONNECTION=.*/DB_CONNECTION=${{ secrets.DB_CONNECTION }}/" .env
-          sed -i 's/^# DB_HOST=/DB_HOST=/' .env
-          sed -i 's/^# DB_PORT=/DB_PORT=/' .env
-          sed -i 's/^# DB_DATABASE=/DB_DATABASE=/' .env
-          sed -i 's/^# DB_USERNAME=/DB_USERNAME=/' .env
-          sed -i 's/^# DB_PASSWORD=/DB_PASSWORD=/' .env
+          sed -i "s/^# DB_HOST=/DB_HOST=/" .env
+          sed -i "s/^# DB_PORT=/DB_PORT=/" .env
+          sed -i "s/^# DB_DATABASE=/DB_DATABASE=/" .env
+          sed -i "s/^# DB_USERNAME=/DB_USERNAME=/" .env
+          sed -i "s/^# DB_PASSWORD=/DB_PASSWORD=/" .env
           sed -i "s/^MAIL_MAILER=.*/MAIL_MAILER=${{ secrets.MAIL_MAILER }}/" .env
           sed -i "s/^MAIL_HOST=.*/MAIL_HOST=${{ secrets.MAIL_HOST }}/" .env
           sed -i "s/^MAIL_PORT=.*/MAIL_PORT=${{ secrets.MAIL_PORT }}/" .env
