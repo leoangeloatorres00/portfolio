@@ -42,6 +42,12 @@ echo "Run the queue worker..."
 php artisan up
 echo "Bringing the application back up..."
 
+composer install -q --no-ansi --no-interaction --no-scripts --no-progress
+echo "Install dependencies"
+
+php artisan key:generate
+echo "Generate application key"
+
 chmod -R 775 storage bootstrap/cache
 echo "Setting permissions..."
 
