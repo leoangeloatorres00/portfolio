@@ -4,7 +4,7 @@ echo "Deploying the application..."
 cp .env.example .env
 echo "Create .env"
 
-composer install -q --no-ansi --no-interaction --no-scripts --no-progress
+composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress
 echo "Install dependencies"
 
 php artisan key:generate
