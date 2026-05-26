@@ -26,10 +26,10 @@ new class extends Component
         ]);
 
         $this->progressbars = collect([
-            (object)['percentage' => '100%', 'text' => 'Frontend Development'],
-            (object)['percentage' => '90%', 'text' => 'Backend Development'],
-            (object)['percentage' => '80%', 'text' => 'UI / UX Design'],
-            (object)['percentage' => '70%', 'text' => 'DevOps & Deployment'],
+            (object)['percentage' => '80%', 'text' => 'Frontend Development'],
+            (object)['percentage' => '70%', 'text' => 'Backend Development'],
+            (object)['percentage' => '60%', 'text' => 'UI / UX Design'],
+            (object)['percentage' => '40%', 'text' => 'DevOps & Deployment'],
         ]);
     }
 };
