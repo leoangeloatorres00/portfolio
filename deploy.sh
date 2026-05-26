@@ -39,7 +39,7 @@ echo "Running database migrations..."
 php artisan queue:restart
 echo "Queue workers restarted..."
 
-pkill -f "php artisan queue:work"
+pkill -f "php artisan queue:work" || true
 echo "Kill other worker before start a new..."
 
 nohup php artisan queue:work > /dev/null 2>&1 &
