@@ -24,6 +24,9 @@ sed -i "s/^# DB_USERNAME=/DB_USERNAME=/" .env
 sed -i "s/^# DB_PASSWORD=/DB_PASSWORD=/" .env
 echo "Update variable to .env"
 
+composer install -q --no-ansi --no-interaction --no-scripts --no-progress
+echo "Install dependencies"
+
 php artisan down
 echo "Putting the application into maintenance mode..."
 
@@ -41,9 +44,6 @@ echo "Run the queue worker..."
 
 php artisan up
 echo "Bringing the application back up..."
-
-composer install
-echo "Install dependencies"
 
 php artisan key:generate
 echo "Generate application key"
