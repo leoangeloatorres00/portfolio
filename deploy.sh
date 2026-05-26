@@ -42,7 +42,7 @@ echo "Run the queue worker..."
 php artisan up
 echo "Bringing the application back up..."
 
-composer install -q --no-ansi --no-interaction --no-scripts --no-progress
+composer install
 echo "Install dependencies"
 
 php artisan key:generate
