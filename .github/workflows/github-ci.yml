@@ -50,7 +50,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
+        with:
+          clean: true
+          
       - name: Deployment to Server via SSH
         if: github.ref == 'refs/heads/main'
         uses: appleboy/ssh-action@v1.0.3
