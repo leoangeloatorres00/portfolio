@@ -2,7 +2,7 @@ name: Deploy Porfolio
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "main" ]
 
 jobs:
   tests:
@@ -72,8 +72,8 @@ jobs:
           key:  ${{ secrets.SSH_PRIVATE_KEY }}
           envs: APP_NAME,APP_OWNER,DB_CONNECTION,MAIL_MAILER,MAIL_HOST,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,MAIL_ENCRYPTION,MAIL_FROM_ADDRESS,MAIL_FROM_NAME
           script: |
-            cd /var/www/portfolio3
-            git pull origin dev
+            cd /var/www/portfolio
+            git pull origin main
             sudo chmod +x deploy.sh
-            ./deploy.sh dev
+            ./deploy.sh main
             sudo chmod -x deploy.sh
