@@ -48,9 +48,11 @@ echo "Run the queue worker..."
 php artisan up
 echo "Bringing the application back up..."
 
-
-chmod -R 775 storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache /var/www/portfolio
 echo "Setting permissions..."
+
+php artisan livewire:publish --assets
+echo "Publish livewire assets"
 
 php artisan optimize:clear
 echo "Clearing caches..."
