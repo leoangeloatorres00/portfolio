@@ -42,9 +42,6 @@ echo "Kill other worker before start a new..."
 nohup php artisan queue:work > /dev/null 2>&1 &
 echo "Run the queue worker..."
 
-php artisan up
-echo "Bringing the application back up..."
-
 php artisan livewire:publish --assets
 echo "Publish livewire assets"
 
@@ -56,5 +53,8 @@ echo "Caching configuration..."
 
 php artisan key:generate
 echo "Generate application key"
+
+php artisan up
+echo "Bringing the application back up..."
 
 echo "Deployment completed successfully!"
