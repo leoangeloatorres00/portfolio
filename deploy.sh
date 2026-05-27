@@ -7,9 +7,6 @@ echo "Create .env"
 composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress
 echo "Install dependencies"
 
-php artisan key:generate
-echo "Generate application key"
-
 echo -e "\nAPP_OWNER=$APP_OWNER\n" >> .env
 echo "Add variable to .env"
 
@@ -56,5 +53,8 @@ echo "Clearing caches..."
 
 php artisan config:cache
 echo "Caching configuration..."
+
+php artisan key:generate
+echo "Generate application key"
 
 echo "Deployment completed successfully!"
