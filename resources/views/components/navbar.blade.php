@@ -17,6 +17,6 @@ new class extends Component
         <a href="#" class="hover:text-slate-500 transition">Home</a>
         <a href="#about" class="hover:text-slate-500 transition">About</a>
         <a href="#skills" class="hover:text-slate-500 transition">Skills</a>
-        <a href="#portfolio" class="hover:text-slate-500 transition">Projects</a>
+        <a href="#projects" class="hover:text-slate-500 transition">Projects</a>
     </nav>
 </div>

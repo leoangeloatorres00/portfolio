@@ -15,11 +15,12 @@ class EmailController extends Controller
 
         $userName = $request->input('name');
         $userEmail = $request->input('email');
+        $userSubject = $request->input('subject');
         $userMessage = $request->input('message');
 
         $adminEmail = config('mail.from.address');
 
-        Mail::to($adminEmail)->queue(new InquiryEmail($userName, $userEmail, $userMessage));
+        Mail::to($adminEmail)->queue(new InquiryEmail($userName, $userEmail, $userSubject, $userMessage));
 
         Mail::to($userEmail)->queue(new AcknowledgementEmail($userName, $userMessage));
         
