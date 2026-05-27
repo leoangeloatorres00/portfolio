@@ -4,9 +4,6 @@ echo "Deploying the application..."
 cp .env.example .env
 echo "Create .env"
 
-composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress
-echo "Install dependencies"
-
 echo -e "\nAPP_OWNER=$APP_OWNER\n" >> .env
 echo "Add variable to .env"
 
@@ -50,6 +47,9 @@ echo "Clearing caches..."
 
 php artisan config:cache
 echo "Caching configuration..."
+
+composer install --ignore-platform-reqs --no-interaction
+echo "Install dependencies"
 
 php artisan key:generate
 echo "Generate application key"
