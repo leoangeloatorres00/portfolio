@@ -29,7 +29,7 @@ new class extends Component
             (object)['percentage' => '80%', 'text' => 'Frontend Development'],
             (object)['percentage' => '70%', 'text' => 'Backend Development'],
             (object)['percentage' => '60%', 'text' => 'UI / UX Design'],
-            (object)['percentage' => '35%', 'text' => 'DevOps & Deployment'],
+            (object)['percentage' => '40%', 'text' => 'DevOps & Deployment'],
         ]);
     }
 };
