@@ -20,7 +20,7 @@ new class extends Component
 
 <section id="about" class="py-28">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
-        <div class="relative hidden lg:block">
+        <div class="photo relative hidden lg:block opacity-0 -translate-x-16 transition-all duration-1000">
             <div class="absolute inset-0 bg-slate-200 rounded-[40px] rotate-6"></div>
             
             <div class="relative glass rounded-[40px] p-6">
@@ -29,7 +29,7 @@ new class extends Component
             </div>
         </div>
 
-        <div>
+        <div class="description opacity-0 translate-x-16 transition-all duration-1000">
             <p class="uppercase tracking-[0.3em] text-sm text-slate-400 mb-5">
                 About Me
             </p>
@@ -62,4 +62,34 @@ new class extends Component
             </div>
         </div>
     </div>
+
+    @script
+    <script>
+        const section = document.querySelector("#about");
+        const photo = document.querySelectorAll(".photo");
+        const description = document.querySelectorAll(".description");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                photo.forEach(element => {
+                    element.classList.toggle('opacity-0', !entry.isIntersecting);
+                    element.classList.toggle('-translate-x-16', !entry.isIntersecting);
+                    element.classList.toggle('opacity-100', entry.isIntersecting);
+                    element.classList.toggle('translate-x-0', entry.isIntersecting);
+                });
+
+                description.forEach(element => {
+                    element.classList.toggle('opacity-0', !entry.isIntersecting);
+                    element.classList.toggle('translate-x-16', !entry.isIntersecting);
+                    element.classList.toggle('opacity-100', entry.isIntersecting);
+                    element.classList.toggle('translate-x-0', entry.isIntersecting);
+                });
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        observer.observe(section);
+    </script>
+    @endscript
 </section>

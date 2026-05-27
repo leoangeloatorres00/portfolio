@@ -28,21 +28,28 @@ new class extends Component
         </p>
 
         <form>
-            <div class="mb-5">
+            <div class="mb-4">
                 <input type="text" id="name" placeholder="Your Name"
                 class="w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200" oninput="checkName(this)"/>
 
                 <p id="name-error" class="m-2 text-xs text-red-500 hidden"></p>
             </div>
 
-            <div class="mb-5">
+            <div class="mb-4">
                 <input type="email" id="email" placeholder="Your Email"
                 class="w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200" />
 
                 <p id="email-error" class="m-2 text-xs text-red-500 hidden"></p>
             </div>
 
-            <div class="mb-5">
+            <div class="mb-4">
+                <input type="text" id="subject" placeholder="Your Email Subject"
+                class="w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200" />
+
+                <p id="subject-error" class="m-2 text-xs text-red-500 hidden"></p>
+            </div>
+
+            <div class="mb-4">
                 <textarea rows="5" id="message" placeholder="Your Message"
                 class="w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 resize-none border-slate-200" maxlength="500" onkeyup="checkMessage()"></textarea>
                 
@@ -50,7 +57,7 @@ new class extends Component
                     <div>
                         <p id="message-error" class="m-2 text-xs text-red-500 hidden"></p>
                     </div>
-                    <div class="text-xs text-right">
+                    <div class="m-2 text-xs text-right">
                         <span id="current">0</span>
                         <span id="maximum">/ 500</span>
                     </div>
@@ -82,10 +89,12 @@ new class extends Component
             modal.classList.add('hidden');
 
             document.body.style.overflow = 'auto';
+
+            clearForm();
+            clearErrors();
         }
 
         window.addEventListener('click', function (e) {
-            e.preventDefault();
             const modal = document.getElementById('contactModal');
             
             if (e.target === modal) {
@@ -99,6 +108,7 @@ new class extends Component
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
                 message: document.getElementById('message').value,
             };
 
@@ -142,10 +152,9 @@ new class extends Component
             .toLowerCase()
             .replace(/\b\w/g, char => char.toUpperCase());
         }
+
         window.showToast = function(message) {
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('message').value = '';
+            clearForm();
 
             window.checkMessage();
 
@@ -175,11 +184,20 @@ new class extends Component
         function clearErrors() {
             document.getElementById('name-error').innerText = '';
             document.getElementById('email-error').innerText = '';
+            document.getElementById('subject-error').innerText = '';
             document.getElementById('message-error').innerText = '';
 
             document.getElementById('name-error').classList.add('hidden');
             document.getElementById('email-error').classList.add('hidden');
+            document.getElementById('subject-error').classList.add('hidden');
             document.getElementById('message-error').classList.add('hidden');
+        }
+
+        function clearForm() {
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
         }
 
     </script>

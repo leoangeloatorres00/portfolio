@@ -21,6 +21,7 @@ class EmailRequest extends FormRequest
         return [
             'email' => 'required|string|email:rfc,dns',
             'name' => 'required|string|max:20',
+            'subject' => 'required|string|max:100',
             'message' => 'required|string|min:10|max:500',
         ];
     }
@@ -34,6 +35,8 @@ class EmailRequest extends FormRequest
             'message.min' => 'The message must be at least 10 characters',
             'message.max' => 'Your message is too long. Please keep it under 500 characters.',
             'name.max' => 'Your name is too long. Please keep it under 20 characters.',
+            'subject.max' => 'Your subject is too long. Please keep it under 100 characters.',
+            'subject.required' => 'The subject is required',
             'email.email' => 'Please provide a valid, working email address.',
         ];
     }

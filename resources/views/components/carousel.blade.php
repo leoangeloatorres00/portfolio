@@ -37,46 +37,44 @@ new class extends Component
         const img = document.getElementById("modalImg");
 
         window.openCarousel = function(index, self) {
-        loadImage(self);
+            loadImage(self);
 
-        current = index;
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-        
-        updateImage();
+            current = index;
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            
+            updateImage();
         }
 
         window.closeCarousel = function() {
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
         }
 
         window.nextImage = function() {
-        current = (current + 1) % images.length;
-        updateImage();
+            current = (current + 1) % images.length;
+            updateImage();
         }
 
         window.prevImage = function() {
-        current = (current - 1 + images.length) % images.length;
-        updateImage();
+            current = (current - 1 + images.length) % images.length;
+            updateImage();
         }
 
         function loadImage(self) {
-        images = [];
-        Array.from({ length: self.dataset.count }).forEach((_, i) => {
-            images.push(`./images/${self.dataset.project}/image${i+1}.jpg`);
-        });
-
-        console.log(images)
+            images = [];
+            Array.from({ length: self.dataset.count }).forEach((_, i) => {
+                images.push(`./images/${self.dataset.project}/image${i+1}.jpg`);
+            });
         }
 
         function updateImage() {
-        img.src = images[current];
+            img.src = images[current];
         }
 
         // click outside to close
         modal.addEventListener("click", (e) => {
-        if (e.target === modal) window.closeCarousel();
+            if (e.target === modal) window.closeCarousel();
         });
     </script>
     @endscript

@@ -21,6 +21,7 @@ class InquiryEmail extends Mailable
     public function __construct(
         public string $userName, 
         public string $userEmail, 
+        public string $userSubject, 
         public string $userMessage
     )
     {
@@ -33,7 +34,7 @@ class InquiryEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Your Portfolio Inquiry',
+            subject: $this->userSubject,
             replyTo: [
                 new Address($this->userEmail, $this->userName)
             ],

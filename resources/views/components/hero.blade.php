@@ -1,5 +1,5 @@
 <?php
-
+use App\Enums\Icons;
 use Livewire\Component;
 
 new class extends Component
@@ -9,12 +9,12 @@ new class extends Component
     public function mount()
     {
         $this->icons = collect([
-            (object)['image' => 'devicon-html5-plain colored', 'text' => 'HTML5'],
-            (object)['image' => 'devicon-javascript-plain colored', 'text' => 'Javascript'],
-            (object)['image' => 'devicon-css3-plain colored', 'text' => 'CSS3'],
-            (object)['image' => 'devicon-laravel-plain colored', 'text' => 'Laravel'],
-            (object)['image' => 'devicon-livewire-plain colored', 'text' => 'Livewire'],
-            (object)['image' => 'devicon-tailwindcss-plain colored', 'text' => 'Tailwind CSS'],
+            (object)['image' => Icons::HTML5, 'text' => 'HTML5'],
+            (object)['image' => Icons::JAVASCRIPT, 'text' => 'Javascript'],
+            (object)['image' => Icons::CSS3, 'text' => 'CSS3'],
+            (object)['image' => Icons::LARAVEL, 'text' => 'Laravel'],
+            (object)['image' => Icons::LIVEWIRE, 'text' => 'Livewire'],
+            (object)['image' => Icons::TAILWINDCSS, 'text' => 'Tailwind CSS'],
         ]);
     }
 };
