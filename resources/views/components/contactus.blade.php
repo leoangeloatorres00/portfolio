@@ -73,25 +73,42 @@ new class extends Component
     
     @script
     <script>
+        
         window.openModal = function() {
-            const modal = document.getElementById('contactModal');
+            const photo = document.getElementById('photo');
+            photo.classList.remove('-translate-x-16');
+            
+            const description = document.getElementById('description');
+            description.classList.remove('translate-x-16');
 
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            setTimeout(() => {
+                const modal = document.getElementById('contactModal');
 
-            document.body.style.overflow = 'hidden';
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+
+                document.body.style.overflow = 'hidden';
+            }, 500)
         }
 
         window.closeModal = function() {
+            const photo = document.getElementById('photo');
+            photo.classList.add('-translate-x-16');
+            
+            const description = document.getElementById('description');
+            description.classList.add('translate-x-16');
+
             const modal = document.getElementById('contactModal');
 
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
 
-            document.body.style.overflow = 'auto';
+                document.body.style.overflow = 'auto';
 
-            clearForm();
-            clearErrors();
+                clearForm();
+                clearErrors();
+            }, 500);
         }
 
         window.addEventListener('click', function (e) {

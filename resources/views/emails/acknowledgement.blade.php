@@ -15,7 +15,7 @@
                 <img src="https://portfolio.codebyeo.com/images/logo.png" alt="logo"
                     style="width: 75px; height: 75px; display: block; margin: 0 auto;">
             </div>
-            <div style="background: #FFFFFF; width: 506px; padding: 32px; margin: 0 auto;">
+            <div style="background: #FFFFFF; max-width: 506px; padding: 32px; margin: 0 auto;">
                 <h1 style="font-weight: bold; font-size: 18px; color: #18181B; margin-bottom: 20px;">Hi {{ $userName }},</h1>
 
                 <p style="font-weight: 400; color: #52525B; margin-bottom: 20px;"> 

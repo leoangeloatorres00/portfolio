@@ -49,7 +49,7 @@ new class extends Component
 
 <section id="skills" class="py-28 bg-white">
     <div class="max-w-7xl mx-auto px-5">
-        <div class="mx-5 lg:mx-10 mb-8">
+        <div class="mx-1 lg:mx-5 mb-8">
             <p class="uppercase tracking-[0.3em] text-sm text-slate-400 mb-5">
                 Tech Stack
             </p>
@@ -64,10 +64,10 @@ new class extends Component
             </p>
         </div>
 
-        <div class="mx-5 lg:mx-8 mb-10">
+        <div class="mx-1 lg:mx-5 mb-10">
             <div class="inline-flex rounded-xl bg-gray-100 p-1 shadow-sm border">
                 @foreach ($navbars as $navbar)
-                    <button class="category rounded-lg px-5 py-2 text-sm font-medium text-gray-500 transition-all duration-200" data-category="{{ $navbar->value }}" onclick="handleCategory(this)">
+                    <button class="category rounded-lg px-3 py-2 text-xs font-medium text-gray-500 transition-all duration-200" data-category="{{ $navbar->value }}" onclick="handleCategory(this)">
                         {{ $navbar->text }}
                     </button>
                 @endforeach
