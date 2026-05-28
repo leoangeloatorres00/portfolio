@@ -21,16 +21,16 @@ new class extends Component
 ?>
 
 <section id="home" class="flex items-center justify-center text-center bg-white">
-    <div class="max-w-5xl mx-auto px-6 py-32">
-        <p class="uppercase tracking-[0.3em] text-sm text-slate-400 mb-6">
+    <div class="max-7-xl p-10">
+        <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400 mb-6">
             Web Developer • Software Engineer
         </p>
-
-        <h1 class="text-5xl md:text-6xl font-black leading-tight mb-8">
+        
+        <h1 class="text-5xl lg:text-6xl font-black leading-tight mb-8">
             Leo Angelo Torres
         </h1>
-
-        <p class="text-md md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto mb-8">
+        
+        <p class="text-sm md:text-md lg:text-lg text-slate-600 leading-relaxed max-w-2xl mb-8">
             Experienced web developer focused on creating
             responsive, scalable, and modern web applications
             with clean UI and efficient backend architecture.
@@ -42,14 +42,19 @@ new class extends Component
             @endforeach
         </div>
 
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="/docs/resume.pdf" download="Torres Leo Angelo.pdf" class="bg-slate-900 text-white px-6 md:px-8 py-4 rounded-full font-medium hover:opacity-90 transition">
+        <div class="flex justify-center gap-4">
+            <a href="/docs/resume.pdf" download="Torres Leo Angelo.pdf" class="bg-slate-900 text-white text-sm md:text-base px-6 md:px-8 py-4 rounded-full font-medium hover:opacity-90 transition">
                 Download CV
             </a>
-
-            <button onclick="openModal()" class="border border-slate-300 px-6 md:px-8 py-4 rounded-full font-medium hover:bg-[#f8fafc] transition">
+            <button onclick="openModal()" class="border border-slate-300 text-sm md:text-base px-6 md:px-8 py-4 rounded-full font-medium hover:bg-[#f8fafc] transition">
                 Contact Me
             </button>
         </div>
     </div>
+    @script
+    <script>
+        const section = document.getElementById('home');
+        section.style.height = (window.outerHeight)+"px";
+    </script>
+    @endscript
 </section>

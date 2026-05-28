@@ -34,15 +34,13 @@ new class extends Component
 };
 ?>
 
-<section id="projects" class="py-28">
-
-    <div class="max-w-7xl mx-auto px-6">
-
-        <div class="text-center mb-10">
+<section id="projects">
+    <div class="max-w-7xl mx-auto text-center px-8 lg:px-20 py-[100px]">
+        <div class="mb-8">
             <h2 class="text-4xl md:text-5xl font-black mb-5">
                 Featured Projects
             </h2>
-
+            
             <p class="uppercase tracking-[0.3em] text-sm text-slate-400">
                 Clean &middot; Responsive &middot; Modern
             </p>
@@ -79,12 +77,26 @@ new class extends Component
             @endforeach
         </div>
     </div>
-
+    
     @script
     <script>
         const section = document.querySelector("#projects");
         const card = document.querySelectorAll(".card");
 
+        if(window.outerWidth < 769) {
+            projects.style.height = 100+"%";
+        } else {
+            projects.style.height = (window.outerHeight)+"px";
+        }
+
+        window.addEventListener("resize", (event) => { 
+            if(event.target.innerWidth < 769) {
+                projects.style.height = 100+"%";
+            } else {
+                projects.style.height = (window.outerHeight)+"px";
+            }
+        });
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 card.forEach((element, index) => {
