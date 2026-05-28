@@ -16,13 +16,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-</head>
-<body class="bg-[#f8fafc] font-[#0f172a]">
-    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-xl">
+</head> 
+
+<body class="bg-[#f8fafc] font-[#0f172a] overflow-x-hidden">
+    <header class="fixed w-full top-0 z-50 border-b border-slate-200 bg-white backdrop-blur-xl">
         {{ $navbar }}
     </header>
 
-    <main class="container mx-auto">
+    <main class="container w-full mx-auto ">
         {{ $content }} 
     </main>
 

@@ -47,44 +47,36 @@ new class extends Component
 };
 ?>
 
-<section id="skills" class="py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="mx-1 lg:mx-5 mb-8">
-            <p class="uppercase tracking-[0.3em] text-sm text-slate-400 mb-5">
+<section id="skills" class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 lg:px-20 py-[100px]">
+        <div class="mb-8">
+            <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400 mb-5">
                 Tech Stack
             </p>
-
             <h1 class="text-4xl md:text-5xl font-black mb-5">
                 Skills & Expertise
             </h1>
-
             <p class="text-gray-400 max-w-2xl leading-relaxed">
                 Technologies and tools I use to build scalable,
                 responsive, and modern web applications.
             </p>
         </div>
-
-        <div class="mx-1 lg:mx-5 mb-10">
-            <div class="inline-flex rounded-xl bg-gray-100 p-1 shadow-sm border">
-                @foreach ($navbars as $navbar)
-                    <button class="category rounded-lg px-3 py-2 text-xs font-medium text-gray-500 transition-all duration-200" data-category="{{ $navbar->value }}" onclick="handleCategory(this)">
-                        {{ $navbar->text }}
-                    </button>
-                @endforeach
-            </div>
+        <div class="inline-flex rounded-xl justify-center bg-gray-100 p-1 shadow-sm border mb-8">
+            @foreach ($navbars as $navbar)
+                <button class="category rounded-lg px-3 py-2 text-xs font-medium text-gray-500 transition-all duration-200" data-category="{{ $navbar->value }}" onclick="handleCategory(this)">
+                    {{ $navbar->text }}
+                </button>
+            @endforeach
         </div>
-
-        <div class="grid lg:grid-cols-2 gap-10">
-            
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
             <div class="grid grid-cols-5 items-center gap-5">
-                @foreach ($icons as $icon)
+               @foreach ($icons as $icon)
                     <div title="{{ $icon->text }}" class="icon rounded-3xl text-center transition duration-300 hover:-translate-y-1" data-category="{{ $icon->category }}">
                         <i class="{{ $icon->image }} text-5xl"></i>
-                        <p class="text-sm py-2">{{ $icon->text }}</p>
+                        <p class="text-xs py-2">{{ $icon->text }}</p>
                     </div>
                 @endforeach
             </div>
-        
             <div class="space-y-10">
                 @foreach ($progressbars as $progressbar)
                     <div>
@@ -103,13 +95,26 @@ new class extends Component
             </div>
         </div>
     </div>
-
-    @script
+     @script
     <script>
         const section = document.querySelector("#skills");
         const icons = document.querySelectorAll(".icon");
         const categories = document.querySelectorAll(".category");
         const progressBars = document.querySelectorAll(".skill-progress");
+
+        if(window.outerWidth < 769) {
+            section.style.height = 100+"%";
+        } else {
+            section.style.height = (window.outerHeight)+"px";
+        }
+
+        window.addEventListener("resize", (event) => { 
+            if(event.target.innerWidth < 769) {
+                section.style.height = 100+"%";
+            } else {
+                section.style.height = (window.outerHeight)+"px";
+            }
+        });
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
