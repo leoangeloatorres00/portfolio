@@ -8,21 +8,17 @@ new class extends Component
 };
 ?>
 
-<div id="carouselModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
-    <!-- Close -->
-    <button onclick="closeCarousel()" class="absolute top-5 right-5 text-white text-3xl">
+<div id="gallery" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center z-50">
+    <button onclick="closeCarousel()" class="absolute top-5 right-5 text-white text-3xl" id="carousel-button-close">
         &times;
     </button>
 
-    <!-- Prev -->
     <button onclick="prevImage()" class="absolute left-5 text-white text-4xl">
         &#10094;
     </button>
+
+    <img id="carousel-image" class="max-w-[90%] max-h-[80vh] rounded-2xl shadow-lg" />
     
-    <!-- Image -->
-    <img id="modalImg" class="max-w-[90%] max-h-[80vh] rounded-2xl shadow-lg" />
-    
-    <!-- Next -->
     <button onclick="nextImage()" class="absolute right-5 text-white text-4xl">
         &#10095;
     </button>
@@ -33,30 +29,30 @@ new class extends Component
 
         let current = 0;
 
-        const modal = document.getElementById("carouselModal");
-        const img = document.getElementById("modalImg");
+        const carouselImage = document.getElementById("carousel-image");
 
-        window.openCarousel = function(index, self) {
+        const gallery = document.getElementById("gallery");
+
+        window.openCarousel = function (index, self) {
+            current = index;
+
             loadImage(self);
 
-            current = index;
-            modal.classList.remove("hidden");
-            modal.classList.add("flex");
-            
+            handleBackdrop(gallery);
+
             updateImage();
         }
 
-        window.closeCarousel = function() {
-            modal.classList.add("hidden");
-            modal.classList.remove("flex");
+        window.closeCarousel = function () {
+            handleBackdrop(gallery);
         }
 
-        window.nextImage = function() {
+        window.nextImage = function () {
             current = (current + 1) % images.length;
             updateImage();
         }
 
-        window.prevImage = function() {
+        window.prevImage = function () {
             current = (current - 1 + images.length) % images.length;
             updateImage();
         }
@@ -64,17 +60,18 @@ new class extends Component
         function loadImage(self) {
             images = [];
             Array.from({ length: self.dataset.count }).forEach((_, i) => {
-                images.push(`./images/${self.dataset.project}/image${i+1}.jpg`);
+                images.push(`./images/${self.dataset.project}/image${i + 1}.jpg`);
             });
         }
 
         function updateImage() {
-            img.src = images[current];
+            carouselImage.src = images[current];
         }
 
-        // click outside to close
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) window.closeCarousel();
+        window.addEventListener('click', function (e) {
+            if (e.target === gallery) {
+                handleBackdrop(gallery);
+            }
         });
     </script>
     @endscript

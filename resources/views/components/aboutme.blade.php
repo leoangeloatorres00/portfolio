@@ -4,11 +4,11 @@ use Livewire\Component;
 
 new class extends Component
 {
-    public $data;
+    public $skills;
 
     public function mount()
     {
-        $this->data = collect([
+        $this->skills = collect([
             (object)['title' => ' 9+ Years Experience', 'description' => 'Experienced in building scalable web applications, business systems, and responsive digital products.'],
             (object)['title' => 'Frontend Development', 'description' => 'Creating modern interfaces using HTML, CSS, JavaScript, TailwindCSS, Vue.js, and React.'],
             (object)['title' => 'Backend Development', 'description' => 'Building secure backend architecture with Laravel, PHP, APIs, authentication, and databases.'],
@@ -18,91 +18,71 @@ new class extends Component
 }
 ?>
 
-<section id="about">
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center py-[100px]">
-        <div id="photo" class="photo relative hidden lg:block opacity-0 -translate-x-16 transition-all duration-1000">
-            <div class="absolute inset-0 bg-slate-200 rounded-[40px] rotate-6"></div>
-            
-            <div class="relative glass rounded-[40px] p-6">
-                <img src="{{ asset('images/profile.jpg') }}" alt="Profile"
-                class="rounded-[30px] w-full h-[580px] object-cover" />
+ <section id="about" class="min-h-[calc(100vh-64px)] flex items-center justify-center">
+    <div class="max-7-xl p-5">
+        <div class="grid lg:grid-cols-2 gap-10">
+            <div id="profile"
+                class="relative hidden lg:block text-center mx-auto fade-item fade-delay fade-left">
+                <div class=" absolute inset-0 rounded-[40px] p-2 bg-slate-200 rotate-6">
+                    <div class="rounded-[30px] min-w-[387px] w-full h-[580px]"></div>
+                </div>
+                <div class="relative rounded-[40px] p-6">
+                    <img src="{{ asset('images/profile.jpg') }}" alt="Profile"
+                        class="rounded-[30px] min-w-[387px] w-full h-[580px] object-cover" />
+                </div>
             </div>
-        </div>
 
-        <div id="description" class="description opacity-0 translate-x-16 transition-all duration-1000">
-            <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400 mb-5">
-                About Me
-            </p>
+            <div id="description" class="flex items-start md:items-center fade-item fade-right">
+                <div>
+                    <p class=" uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400 mb-3">
+                        About Me
+                    </p>
 
-            <h2 class="text-4xl md:text-5xl font-black leading-tight mb-8">
-                Creating Modern
-                <span class="text-slate-400">Digital Experiences</span>
-            </h2>
+                    <h2 class="text-3xl md:text-4xl font-black leading-tight mb-4">
+                        Creating Modern
+                        <span class="text-slate-400">Digital Experiences</span>
+                    </h2>
 
-            <p class="text-slate-600 leading-relaxed mb-8">
-                My workflow combines clean development practices,
-                modern technologies, and user-focused design to
-                create high-quality digital experiences.
-            </p>
+                    <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4">
+                        My workflow combines clean development practices,
+                        modern technologies, and user-focused design to
+                        create high-quality digital experiences.
+                    </p>
 
-            <div class="grid md:grid-cols-2 gap-4">
-                @foreach ($data as $item)
-                    <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-                        <div class="relative z-10">
-                            <h3 class="text-md md:text-lg font-black leading-tight mb-2">
-                                {{ $item->title }}
-                            </h3>
-
-                            <p class="text-slate-600 text-xs leading-relaxed">
-                               {{ $item->description }}
-                            </p>
-                        </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        @foreach ($skills as $skill)
+                            <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6">
+                                <div class="relative z-10">
+                                    <h3 class="text-md md:text-lg font-black leading-tight mb-2">
+                                       {{ $skill->title }}
+                                    </h3>
+                                    <p class="text-slate-600 text-[10px] leading-relaxed mb-0">
+                                        {{ $skill->description }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     </div>
     @script
     <script>
-        const section = document.querySelector("#about");
-        const photo = document.querySelectorAll(".photo");
-        const description = document.querySelectorAll(".description");
-
-        if(window.outerWidth < 769) {
-            section.style.height = 100+"%";
-        } else {
-            section.style.height = (window.outerHeight)+"px";
-        }
-
-        window.addEventListener("resize", (event) => { 
-            if(event.target.innerWidth < 769) {
-                section.style.height = 100+"%";
-            } else {
-                section.style.height = (window.outerHeight)+"px";
-            }
-        });
+        const about = document.getElementById('about');
+        const profile = document.getElementById('profile');
+        const description = document.getElementById('description');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                photo.forEach(element => {
-                    element.classList.toggle('opacity-0', !entry.isIntersecting);
-                    element.classList.toggle('-translate-x-16', !entry.isIntersecting);
-                    element.classList.toggle('opacity-100', entry.isIntersecting);
-                    element.classList.toggle('translate-x-0', entry.isIntersecting);
-                });
-
-                description.forEach(element => {
-                    element.classList.toggle('opacity-0', !entry.isIntersecting);
-                    element.classList.toggle('translate-x-16', !entry.isIntersecting);
-                    element.classList.toggle('opacity-100', entry.isIntersecting);
-                    element.classList.toggle('translate-x-0', entry.isIntersecting);
-                });
+                profile.classList.toggle('fade-left', entry.isIntersecting);
+                description.classList.toggle('fade-right', entry.isIntersecting);
             });
         }, {
             threshold: 0.3
         });
 
-        observer.observe(section);
+        observer.observe(about);
     </script>
     @endscript
 </section>
