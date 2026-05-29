@@ -5,6 +5,7 @@ cp .env.example .env
 echo "Create .env"
 
 echo -e "\nAPP_OWNER=$APP_OWNER\n" >> .env
+echo -e "\nMAIL_ENCRYPTION=$MAIL_ENCRYPTION\n" >> .env
 echo "Add variable to .env"
 
 sed -i "s/^APP_NAME=.*/APP_NAME=$APP_NAME/" .env
@@ -15,7 +16,6 @@ sed -i "s/^MAIL_PORT=.*/MAIL_PORT=$MAIL_PORT/" .env
 sed -i "s/^MAIL_USERNAME=.*/MAIL_USERNAME=$MAIL_USERNAME/" .env
 sed -i "s/^MAIL_PASSWORD=.*/MAIL_PASSWORD=$MAIL_PASSWORD/" .env
 sed -i "s/^MAIL_FROM_ADDRESS=.*/MAIL_FROM_ADDRESS=$MAIL_FROM_ADDRESS/" .env
-sed -i "s/^MAIL_ENCRYPTION=.*/MAIL_ENCRYPTION=$MAIL_ENCRYPTION/" .env
 sed -i "s/^MAIL_FROM_NAME=.*/MAIL_FROM_NAME=$MAIL_FROM_NAME/" .env
 sed -i "s/^# DB_HOST=/DB_HOST=/" .env
 sed -i "s/^# DB_PORT=/DB_PORT=/" .env
