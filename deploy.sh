@@ -36,9 +36,6 @@ echo "Queue workers restarted..."
 pkill -f "php artisan queue:work" || true
 echo "Kill other worker before start a new..."
 
-nohup php artisan queue:work > /dev/null 2>&1 &
-echo "Run the queue worker..."
-
 php artisan livewire:publish --assets
 echo "Publish livewire assets"
 
@@ -56,5 +53,8 @@ echo "Generate application key"
 
 php artisan up
 echo "Bringing the application back up..."
+
+nohup php artisan queue:work > /dev/null 2>&1 &
+echo "Run the queue worker..."
 
 echo "Deployment completed successfully!"
