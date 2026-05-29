@@ -43,10 +43,6 @@ new class extends Component
             updateImage();
         }
 
-        window.closeCarousel = function () {
-            handleBackdrop(gallery);
-        }
-
         window.nextImage = function () {
             current = (current + 1) % images.length;
             updateImage();
@@ -68,7 +64,7 @@ new class extends Component
             carouselImage.src = images[current];
         }
 
-        window.addEventListener('click', function (e) {
+        gallery.addEventListener('click', function (e) {
             if (e.target === gallery) {
                 handleBackdrop(gallery);
             }

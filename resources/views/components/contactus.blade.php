@@ -9,55 +9,54 @@ new class extends Component
 ?>
 
 <div id="contact" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center z-50">
+     <div id="toast"
+        class="hidden w-[90%] max-w-md absolute top-2 left-1/2 -translate-x-1/2 bg-green-500 opacity-0 text-white px-6 py-3 my-6 rounded-lg shadow-lg transition-all duration-300 z-[100]">
+    </div>
+    
     <div class="bg-white w-[90%] max-w-lg rounded-2xl p-8 relative overflow-hidden">
         <button id="button-close" class="absolute top-5 right-5 text-3xl">
             &times;
         </button>
-        <div id="toast"
-            class="hidden bg-green-500 text-white px-6 py-3 my-6 rounded-lg shadow-lg opacity-0 transition-all duration-300">
-        </div>
         <h2 class="text-3xl md:text-4xl font-black my-4">
             Get In Touch
         </h2>
         <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-8">
             Interested in working together, collaborating, or just saying hello? Feel free to reach out anytime.
         </p>
-        <form>
-            <div class="mb-4">
-                <input type="text" id="name" placeholder="Your Name"
-                    class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200"
-                    oninput="checkName(this)" />
-                <p id="name-error" class="m-2 text-xs text-red-500 hidden"></p>
-            </div>
-            <div class="mb-4">
-                <input type="email" id="email" placeholder="Your Email"
-                    class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200" />
-                <p id="email-error" class="m-2 text-xs text-red-500 hidden"></p>
-            </div>
-            <div class="mb-4">
-                <input type="text" id="subject" placeholder="Your Email Subject"
-                    class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200" />
-                <p id="subject-error" class="m-2 text-xs text-red-500 hidden"></p>
-            </div>
-            <div class="mb-4">
-                <textarea rows="5" id="message" placeholder="Your Message"
-                    class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 resize-none border-slate-200"
-                    maxlength="500" onkeyup="checkMessage()"></textarea>
-                <div class="grid grid-cols-2">
-                    <div>
-                        <p id="message-error" class="m-2 text-xs text-red-500 hidden"></p>
-                    </div>
-                    <div class="m-2 text-xs text-right">
-                        <span id="current">0</span>
-                        <span id="maximum">/ 500</span>
-                    </div>
+        <div class="mb-4">
+            <input type="text" id="name" placeholder="Your Name"
+                class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200"
+                oninput="checkName(this)" />
+            <p id="name-error" class="m-2 text-xs text-red-500 hidden"></p>
+        </div>
+        <div class="mb-4">
+            <input type="email" id="email" placeholder="Your Email"
+                class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200" />
+            <p id="email-error" class="m-2 text-xs text-red-500 hidden"></p>
+        </div>
+        <div class="mb-4">
+            <input type="text" id="subject" placeholder="Your Email Subject"
+                class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200" />
+            <p id="subject-error" class="m-2 text-xs text-red-500 hidden"></p>
+        </div>
+        <div class="mb-4">
+            <textarea rows="5" id="message" placeholder="Your Message"
+                class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 resize-none border-slate-200"
+                maxlength="500" onkeyup="checkMessage()"></textarea>
+            <div class="grid grid-cols-2">
+                <div>
+                    <p id="message-error" class="m-2 text-xs text-red-500 hidden"></p>
+                </div>
+                <div class="m-2 text-xs text-right">
+                    <span id="current">0</span>
+                    <span id="maximum">/ 500</span>
                 </div>
             </div>
-            <button onclick="submitForm()"
-                class="w-full bg-slate-900 text-white py-4 rounded-2xl font-medium hover:opacity-90 transition">
-                Send Message
-            </button>
-        </form>
+        </div>
+        <button onclick="submitForm()"
+            class="w-full bg-slate-900 text-white py-4 rounded-2xl font-medium hover:opacity-90 transition">
+            Send Message
+        </button>
     </div>
 
     @script
@@ -126,7 +125,7 @@ new class extends Component
             window.showToast('Message sent successfully');
         }
 
-        window.addEventListener('click', function (e) {
+        contact.addEventListener('click', function (e) {
             if (e.target === contact) {
                 handleBackdrop(contact);
             }
