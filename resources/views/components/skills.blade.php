@@ -47,36 +47,43 @@ new class extends Component
 };
 ?>
 
-<section id="skills" class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 lg:px-20 py-[100px]">
-        <div class="mb-8">
-            <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400 mb-5">
+<section id="skills"
+    class="min-h-[calc(100vh-64px)] flex justify-center md:justify-start text-center md:text-left bg-white">
+    <div class="max-7-xl w-full p-5">
+        <div class="space-y-5 mb-5">
+            <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400">
                 Tech Stack
             </p>
-            <h1 class="text-4xl md:text-5xl font-black mb-5">
+
+            <h1 class="text-3xl md:text-4xl font-black">
                 Skills & Expertise
             </h1>
-            <p class="text-gray-400 max-w-2xl leading-relaxed">
+
+            <p class="text-sm md:text-base text-gray-400 max-w-2xl leading-relaxed">
                 Technologies and tools I use to build scalable,
                 responsive, and modern web applications.
             </p>
         </div>
+
         <div class="inline-flex rounded-xl justify-center bg-gray-100 p-1 shadow-sm border mb-8">
             @foreach ($navbars as $navbar)
-                <button class="category rounded-lg px-3 py-2 text-xs font-medium text-gray-500 transition-all duration-200" data-category="{{ $navbar->value }}" onclick="handleCategory(this)">
+                <button class="category-button rounded-lg px-3 py-2 text-xs font-medium"
+                    onclick="handleCategory({{ $loop->index }})">
                     {{ $navbar->text }}
                 </button>
             @endforeach
         </div>
-        <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+        <div class="grid md:grid-cols-2 gap-10">
             <div class="grid grid-cols-5 items-center gap-5">
-               @foreach ($icons as $icon)
-                    <div title="{{ $icon->text }}" class="icon rounded-3xl text-center transition duration-300 hover:-translate-y-1" data-category="{{ $icon->category }}">
-                        <i class="{{ $icon->image }} text-5xl"></i>
+                @foreach ($icons as $icon)
+                    <div class="icon rounded-3xl text-center" data-category="{{ $icon->category }}">
+                        <i class="{{ $icon->image }} text-4xl md:text-5xl"></i>
                         <p class="text-xs py-2">{{ $icon->text }}</p>
                     </div>
                 @endforeach
             </div>
+
             <div class="space-y-10">
                 @foreach ($progressbars as $progressbar)
                     <div>
@@ -84,86 +91,61 @@ new class extends Component
                             <span class="font-medium">{{ $progressbar->text }}</span>
                             <span>{{ $progressbar->percentage }}</span>
                         </div>
-                        <div class="h-3 bg-slate-200 rounded-full overflow-hidden">
-                            <div 
-                                class="skill-progress h-full w-0 bg-slate-900 rounded-full transition-all duration-[1500ms] ease-out"
-                                data-width="{{ $progressbar->percentage }}">
-                            </div>
+                        <div class="h-3 bg-slate-200 rounded-full overflow-hidden mb-8">
+                            <div class="skill-progress h-full w-0 bg-slate-900 rounded-full transition-all duration-[1500ms] ease-out"
+                                data-width="{{ $progressbar->percentage }}" />
                         </div>
-                    </div>
-                @endforeach                 
+                    </div> 
+                @endforeach
             </div>
         </div>
     </div>
-     @script
-    <script>
-        const section = document.querySelector("#skills");
-        const icons = document.querySelectorAll(".icon");
-        const categories = document.querySelectorAll(".category");
-        const progressBars = document.querySelectorAll(".skill-progress");
 
-        if(window.outerWidth < 769) {
-            section.style.height = 100+"%";
-        } else {
-            section.style.height = (window.outerHeight)+"px";
+    @script
+    <script>
+        const skills = document.getElementById('skills');
+
+        const icons = document.querySelectorAll(".icon");
+        const progressBars = document.querySelectorAll(".skill-progress");
+        const categoryButton = document.querySelectorAll(".category-button");
+
+        window.handleCategory = (index) => {
+            categoryIconSelected(index);
+            categoryButtonSelected(index);
         }
 
-        window.addEventListener("resize", (event) => { 
-            if(event.target.innerWidth < 769) {
-                section.style.height = 100+"%";
-            } else {
-                section.style.height = (window.outerHeight)+"px";
-            }
-        });
+        function categoryButtonSelected(index) {
+            categoryButton.forEach((element, elementIndex) => {
+                const isSelected = index === elementIndex;
+                element.classList.toggle('bg-black', isSelected);
+                element.classList.toggle('text-white', isSelected);
+            });
+        }
+
+        function categoryIconSelected(index) {
+            const category = ['', 'frontend', 'backend', 'database', 'devops'];
+
+            icons.forEach((element) => {
+                const isSelected = element.dataset.category != category[index] && category[index] != ''
+                element.classList.toggle('opacity-30', isSelected);
+                element.classList.toggle('hover:-translate-y-1', !isSelected);
+            });
+        }
 
         const observer = new IntersectionObserver((entries) => {
+            const self = this
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    progressBars.forEach((bar) => {
-                        bar.style.width = bar.dataset.width;
-                    });
-                } else {
-                    progressBars.forEach((bar) => {
-                        bar.style.width = '0%';
-                    });
-                }
-
-                categories.forEach((element) => {
-                    if(!element.dataset.category) {
-                        handleCategory(element);
-                    } else {
-                        buttonSelected(element, false);
-                    }
+                progressBars.forEach((element) => {
+                    element.style.width = entry.isIntersecting ? element.dataset.width : '0%';
                 });
+
+                handleCategory(0);
             });
         }, {
             threshold: 0.3
         });
 
-        window.handleCategory = function(navbar) {
-            icons.forEach(icon => {
-                const isSelected = icon.dataset.category != navbar.dataset.category && navbar.dataset.category != ''
-                icon.classList.toggle('opacity-30', isSelected);
-                icon.classList.toggle('hover:-translate-y-1', !isSelected);
-            });
-
-            categories.forEach((category) => {
-                category.classList.remove('bg-black');
-                category.classList.remove('text-white');                
-            });
-
-            buttonSelected(navbar);
-        }
-
-        function buttonSelected(element, isValid = true) {
-            element.classList.toggle('bg-black', isValid);
-            element.classList.toggle('text-white', isValid);
-  
-            element.classList.toggle('text-gray-500', !isValid);
-        }
-
-        observer.observe(section);
+        observer.observe(skills);
     </script>
     @endscript
 </section>
-

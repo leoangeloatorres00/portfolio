@@ -11,7 +11,7 @@
     </x-slot>
 
     <x-slot name="others">
-        @livewire('contactus')
         @livewire('carousel')
+        @livewire('contactus')
     </x-slot>
 </div>
