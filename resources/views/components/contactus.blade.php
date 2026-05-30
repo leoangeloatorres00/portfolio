@@ -13,37 +13,37 @@ new class extends Component
         class="hidden w-[90%] max-w-md absolute top-2 left-1/2 -translate-x-1/2 bg-green-500 opacity-0 text-white px-6 py-3 my-6 rounded-lg shadow-lg transition-all duration-300 z-[100]">
     </div>
     
-    <div class="bg-white w-[90%] max-w-lg rounded-2xl p-8 relative overflow-hidden">
-        <button id="button-close" class="absolute top-5 right-5 text-3xl">
+    <div class="bg-white w-[90%] max-w-lg rounded-2xl p-6 md:p-8 relative overflow-hidden">
+        <button id="button-close" class="absolute top-3 right-5 text-3xl">
             &times;
         </button>
-        <h2 class="text-3xl md:text-4xl font-black my-4">
+        <h2 class="text-3xl md:text-4xl font-black my-3">
             Get In Touch
         </h2>
-        <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-8">
+        <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-4">
             Interested in working together, collaborating, or just saying hello? Feel free to reach out anytime.
         </p>
-        <div class="mb-4">
+        <div class="mb-3">
             <input type="text" id="name" placeholder="Your Name"
-                class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200"
+                class="input w-full border rounded-lg p-3 outline-none border-slate-200 text-sm md:text-base"
                 oninput="checkName(this)" />
             <p id="name-error" class="m-2 text-xs text-red-500 hidden"></p>
         </div>
-        <div class="mb-4">
+        <div class="mb-3">
             <input type="email" id="email" placeholder="Your Email"
-                class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200" />
+                class="input w-full border rounded-lg p-3 outline-none border-slate-200 text-sm md:text-base" />
             <p id="email-error" class="m-2 text-xs text-red-500 hidden"></p>
         </div>
-        <div class="mb-4">
+        <div class="mb-3">
             <input type="text" id="subject" placeholder="Your Email Subject"
-                class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 border-slate-200" />
+                class="input w-full border rounded-lg p-3 outline-none border-slate-200 text-sm md:text-base"  />
             <p id="subject-error" class="m-2 text-xs text-red-500 hidden"></p>
         </div>
-        <div class="mb-4">
-            <textarea rows="5" id="message" placeholder="Your Message"
-                class="input w-full border rounded-2xl px-5 py-4 outline-none focus:border-slate-900 resize-none border-slate-200"
+        <div class="mb-3">
+            <textarea rows="4" id="message" placeholder="Your Message"
+                class="input w-full border rounded-lg p-3 outline-none resize-none border-slate-200 text-sm md:text-base" 
                 maxlength="500" onkeyup="checkMessage()"></textarea>
-            <div class="grid grid-cols-2">
+            <div class="flex justify-between">
                 <div>
                     <p id="message-error" class="m-2 text-xs text-red-500 hidden"></p>
                 </div>
@@ -97,7 +97,7 @@ new class extends Component
             });
 
             inputs.forEach(input => {
-                input.classList.remove('border-red-200')
+                input.classList.remove('border-red-500')
             });
 
             if (response.status === 422) {
@@ -117,7 +117,7 @@ new class extends Component
                     
                     document
                         .getElementById(`${field}`)
-                        .classList.toggle('border-red-200', data.errors.hasOwnProperty(field))
+                        .classList.toggle('border-red-500', data.errors.hasOwnProperty(field))
                 });
                 return;
             }
