@@ -67,7 +67,7 @@ new class extends Component
 
         <div class="inline-flex rounded-xl justify-center bg-gray-100 p-1 shadow-sm border mb-8">
             @foreach ($navbars as $navbar)
-                <button class="category-button rounded-lg px-3 py-2 text-xs font-medium"
+                <button class="category-button rounded-lg px-3 py-2 text-[10px] sm:text-xs font-medium"
                     onclick="handleCategory({{ $loop->index }})">
                     {{ $navbar->text }}
                 </button>
