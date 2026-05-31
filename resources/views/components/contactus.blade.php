@@ -13,7 +13,7 @@ new class extends Component
         class="hidden w-[90%] max-w-md absolute top-2 left-1/2 -translate-x-1/2 bg-green-500 opacity-0 text-white px-6 py-3 my-6 rounded-lg shadow-lg transition-all duration-300 z-[100]">
     </div>
     
-    <div class="bg-white w-[90%] max-w-lg rounded-2xl p-6 md:p-8 relative overflow-hidden">
+    <div id="form" class="bg-white w-[90%] max-w-lg rounded-2xl p-6 md:p-8 relative overflow-hidden">
         <button id="button-close" class="absolute top-3 right-5 text-3xl">
             &times;
         </button>
@@ -85,6 +85,8 @@ new class extends Component
                 message: document.getElementById('message').value,
             };
 
+            changeFormState();
+
             const response = await fetch('/api/email', {
                 method: 'POST',
                 headers: {
@@ -96,9 +98,9 @@ new class extends Component
                 body: JSON.stringify(formData)
             });
 
-            inputs.forEach(input => {
-                input.classList.remove('border-red-500')
-            });
+            if(response) {
+                changeFormState(false);
+            }
 
             if (response.status === 422) {
                 const data = await response.json();
@@ -187,6 +189,15 @@ new class extends Component
             document.getElementById('email').value = '';
             document.getElementById('subject').value = '';
             document.getElementById('message').value = '';
+        }
+
+        function changeFormState(isEnabled = true) {
+            const form = document.getElementById("form");
+            const elements = form.querySelectorAll("input, textarea, button");;
+
+            elements.forEach(element => {
+                element.disabled = isEnabled
+            });
         }
     </script>
     @endscript

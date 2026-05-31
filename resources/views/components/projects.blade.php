@@ -27,7 +27,7 @@ new class extends Component
                     Icons::HTML5, Icons::CSS3, Icons::JAVASCRIPT, Icons::REACT, Icons::LARAVEL, Icons::MYSQL, Icons::REDIS
                 ],
                 'code' => 'thebox',
-                'galleryCount' => 3
+                'galleryCount' => 1
             ],
         ]);
     }
