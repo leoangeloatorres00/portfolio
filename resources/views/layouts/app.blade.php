@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
 
+    <meta name="description" content="Portfolio of Leo Angelo Torres, a full-stack web developer with 10 years of experience creating modern web applications, scalable solutions, and responsive user experiences using Laravel, PHP, JavaScript, and Tailwind CSS."> 
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +13,12 @@
     
     <title>{{ $title ?? 'Portfolio' }}</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
+    
     <style>
         html {
             scroll-behavior: smooth;
@@ -104,7 +106,7 @@
 </head> 
 
 <body class="bg-[#f8fafc] text-slate-800">
-    <header class="z-50 border-b border-slate-200 shadow-sm">
+    <header class="z-50 border-b border-slate-200 shadow-sm bg-white backdrop-blur">
         {{ $navbar }}
     </header>
 

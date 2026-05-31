@@ -18,7 +18,7 @@ new class extends Component
 };
 ?>
 
-<nav class="max-w-7xl mx-auto bg-white/90 backdrop-blur">
+<nav class="max-w-7xl mx-auto">
     <div class="flex items-center justify-between h-16 p-5">
         <a href="#" class="text-2xl font-black tracking-tight">
             Portfolio<span class="text-slate-400">.</span>
@@ -32,7 +32,7 @@ new class extends Component
             @endforeach
         </div>
         
-        <button id="menu-button" class="md:hidden flex flex-col gap-1.5">
+        <button id="menu-button" class="md:hidden flex flex-col gap-1.5" aria-label="Open menu">
             @foreach(range(0,2) as $index)
                 <span class="w-6 h-0.5 bg-slate-800"></span>
             @endforeach

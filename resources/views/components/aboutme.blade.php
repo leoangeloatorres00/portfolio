@@ -27,14 +27,14 @@ new class extends Component
                     <div class="rounded-[30px] min-w-[387px] w-full h-[580px]"></div>
                 </div>
                 <div class="relative rounded-[40px] p-6">
-                    <img src="{{ asset('images/profile.jpg') }}" alt="Profile"
+                    <img src="{{ asset('images/profile.jpg') }}" loading="lazy" alt="Profile"
                         class="rounded-[30px] min-w-[387px] w-full h-[580px] object-cover" />
                 </div>
             </div>
 
             <div id="description" class="flex items-start md:items-center fade-item fade-right">
                 <div>
-                    <p class=" uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400 mb-3">
+                    <p class=" uppercase tracking-[0.3em] text-xs md:text-sm text-slate-800 mb-3">
                         About Me
                     </p>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\Icons;
+use App\Enums\Links;
 use Livewire\Component;
 
 new class extends Component
@@ -12,21 +13,21 @@ new class extends Component
     public function mount()
     {
         $this->icons = collect([
-            (object)['image' => Icons::HTML5, 'text' => 'HTML5', 'category' => 'frontend'],
-            (object)['image' => Icons::LARAVEL, 'text' => 'Laravel', 'category' => 'backend'],
-            (object)['image' => Icons::REDIS, 'text' => 'Redis', 'category' => 'database'],
-            (object)['image' => Icons::REACT, 'text' => 'React', 'category' => 'frontend'],
-            (object)['image' => Icons::AWS, 'text' => 'AWS', 'category' => 'devops'],
-            (object)['image' => Icons::CSS3, 'text' => 'CSS3', 'category' => 'frontend'],
-            (object)['image' => Icons::PHP, 'text' => 'PHP', 'category' => 'backend'],
-            (object)['image' => Icons::VUE, 'text' => 'Vue.js', 'category' => 'frontend'],
-            (object)['image' => Icons::GITHUB, 'text' => 'Github', 'category' => 'devops'],
-            (object)['image' => Icons::MYSQL, 'text' => 'MySQL', 'category' => 'database'],
-            (object)['image' => Icons::JAVA, 'text' => 'Java', 'category' => 'backend'],
-            (object)['image' => Icons::TAILWINDCSS, 'text' => 'Tailwind CSS', 'category' => 'frontend'],
-            (object)['image' => Icons::JAVASCRIPT, 'text' => 'Javascript', 'category' => 'frontend'],
-            (object)['image' => Icons::NODEJS, 'text' => 'NodeJS', 'category' => 'backend'],
-            (object)['image' => Icons::LIVEWIRE, 'text' => 'Livewire', 'category' => 'frontend'],
+            (object)['link' => Links::HTML5, 'image' => Icons::HTML5, 'text' => 'HTML5', 'category' => 'frontend'],
+            (object)['link' => Links::LARAVEL, 'image' => Icons::LARAVEL, 'text' => 'Laravel', 'category' => 'backend'],
+            (object)['link' => Links::REDIS, 'image' => Icons::REDIS, 'text' => 'Redis', 'category' => 'database'],
+            (object)['link' => Links::REACT, 'image' => Icons::REACT, 'text' => 'React', 'category' => 'frontend'],
+            (object)['link' => Links::AWS, 'image' => Icons::AWS, 'text' => 'AWS', 'category' => 'devops'],
+            (object)['link' => Links::CSS3, 'image' => Icons::CSS3, 'text' => 'CSS3', 'category' => 'frontend'],
+            (object)['link' => Links::PHP, 'image' => Icons::PHP, 'text' => 'PHP', 'category' => 'backend'],
+            (object)['link' => Links::VUE, 'image' => Icons::VUE, 'text' => 'Vue.js', 'category' => 'frontend'],
+            (object)['link' => Links::GITHUB, 'image' => Icons::GITHUB, 'text' => 'Github', 'category' => 'devops'],
+            (object)['link' => Links::MYSQL, 'image' => Icons::MYSQL, 'text' => 'MySQL', 'category' => 'database'],
+            (object)['link' => Links::JAVA, 'image' => Icons::JAVA, 'text' => 'Java', 'category' => 'backend'],
+            (object)['link' => Links::TAILWINDCSS, 'image' => Icons::TAILWINDCSS, 'text' => 'Tailwind CSS', 'category' => 'frontend'],
+            (object)['link' => Links::JAVASCRIPT, 'image' => Icons::JAVASCRIPT, 'text' => 'Javascript', 'category' => 'frontend'],
+            (object)['link' => Links::NODEJS, 'image' => Icons::NODEJS, 'text' => 'NodeJS', 'category' => 'backend'],
+            (object)['link' => Links::LIVEWIRE, 'image' => Icons::LIVEWIRE, 'text' => 'Livewire', 'category' => 'frontend'],
         ]);
 
         $this->progressbars = collect([
@@ -51,7 +52,7 @@ new class extends Component
     class="min-h-[calc(100vh-64px)] flex justify-center md:justify-start text-center md:text-left bg-white">
     <div class="max-7-xl w-full p-5">
         <div class="space-y-5 mb-5">
-            <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400">
+            <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-800">
                 Tech Stack
             </p>
 
@@ -59,13 +60,13 @@ new class extends Component
                 Skills & Expertise
             </h1>
 
-            <p class="text-sm md:text-base text-gray-400 max-w-2xl leading-relaxed">
+            <p class="text-sm md:text-base text-gray-800 max-w-2xl leading-relaxed">
                 Technologies and tools I use to build scalable,
                 responsive, and modern web applications.
             </p>
         </div>
 
-        <div class="inline-flex rounded-xl justify-center bg-gray-100 p-1 shadow-sm border mb-8">
+        <div class="inline-flex rounded-xl justify-center bg-gray-100 p-1 shadow-sm  mb-8">
             @foreach ($navbars as $navbar)
                 <button class="category-button rounded-lg px-3 py-2 text-[10px] sm:text-xs font-medium"
                     onclick="handleCategory({{ $loop->index }})">
@@ -77,10 +78,10 @@ new class extends Component
         <div class="grid md:grid-cols-2 gap-10">
             <div class="grid grid-cols-5 items-center gap-5">
                 @foreach ($icons as $icon)
-                    <div class="icon rounded-3xl text-center" data-category="{{ $icon->category }}">
+                    <a href="{{ $icon->link }}" class="icon rounded-3xl text-center" data-category="{{ $icon->category }}">
                         <i class="{{ $icon->image }} text-4xl md:text-5xl"></i>
                         <p class="text-xs py-2">{{ $icon->text }}</p>
-                    </div>
+                    </a>
                 @endforeach
             </div>
 

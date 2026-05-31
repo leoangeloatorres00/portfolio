@@ -12,7 +12,7 @@
     <div style="font-family: 'Segoe UI'; width: 100%; background: #FAFAFA; padding-top: 50px; padding-bottom: 50px;">
         <div style="width: 100%; margin: 0 auto; ">
             <div style="width: 100%; margin-top: 15px; margin-bottom: 15px;">
-                <img src="https://portfolio.codebyeo.com/images/logo.png" alt="logo"
+                <img src="https://portfolio.codebyeo.com/images/logo.png" loading="lazy" alt="logo"
                     style="width: 75px; height: 75px; display: block; margin: 0 auto;">
             </div>
             <div style="background: #FFFFFF; max-width: 506px; padding: 32px; margin: 0 auto;">
