@@ -18,7 +18,7 @@ class EmailController extends Controller
         $userSubject = $request->input('subject');
         $userMessage = $request->input('message');
 
-        $adminEmail = config('mail.from.address');
+        $adminEmail = config('mail.mailers.smtp.username');
 
         Mail::to($adminEmail)->queue(new InquiryEmail($userName, $userEmail, $userSubject, $userMessage));
 

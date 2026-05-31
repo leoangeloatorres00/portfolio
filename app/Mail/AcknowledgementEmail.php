@@ -30,9 +30,15 @@ class AcknowledgementEmail extends Mailable
      * Get the message envelope.
      */
     public function envelope(): Envelope
-    {
+    {   
+        $replyAddress = config('mail.from.address');
+        $replyName = config('mail.from.name');
+        
         return new Envelope(
-            subject: 'Acknowledgement of your Message'
+            subject: 'Acknowledgement of your Message',
+            replyTo: [
+                new Address($replyAddress, $replyName)
+            ],
         );
     }
 
