@@ -98,7 +98,7 @@
 </head> 
 
 <body class="bg-[#f8fafc] text-slate-800">
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+    <header class="sticky top-0 z-50 border-b border-slate-200 shadow-sm">
         {{ $navbar }}
     </header>
 
