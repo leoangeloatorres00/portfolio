@@ -33,6 +33,10 @@ new class extends Component
 
         const gallery = document.getElementById("gallery");
 
+        window.closeCarousel = function (index, self) {
+            handleBackdrop(gallery);
+        }
+
         window.openCarousel = function (index, self) {
             current = index;
 
