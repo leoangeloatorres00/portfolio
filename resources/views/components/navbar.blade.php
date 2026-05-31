@@ -61,6 +61,8 @@ new class extends Component
                 mobileMenu.classList.add("hidden");
             });
         });
+
+        window.location.hash = "home";
     </script>
     @endscript
 </nav>
