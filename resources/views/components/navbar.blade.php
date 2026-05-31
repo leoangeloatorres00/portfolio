@@ -18,7 +18,7 @@ new class extends Component
 };
 ?>
 
-<nav class="max-w-7xl mx-auto px-5">
+<nav class="max-w-7xl mx-auto px-5 bg-white/90 backdrop-blur">
     <div class="flex items-center justify-between h-16">
         <a href="#" class="text-2xl font-black tracking-tight">
             Portfolio<span class="text-slate-400">.</span>
