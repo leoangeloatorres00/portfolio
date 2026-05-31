@@ -62,7 +62,7 @@ new class extends Component
             });
         });
 
-        window.location.hash = "home";
+        history.pushState(null, null, '#home');
     </script>
     @endscript
 </nav>
