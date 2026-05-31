@@ -12,7 +12,7 @@ new class extends Component
             (object)[
                 'title' => ' GCash | eC-Savings',
                 'description' => 'eC-Savings is a digital savings account powered by Cebuana Lhuillier Rural Bank. It features a competitive annual interest rate, no maintaining balance, and can be easily opened and managed entirely through the GCash app (via GSave) or the dedicated eCebuana App',
-                'images' => 'images/gcash.png',
+                'images' => 'images/gcash.webp',
                 'icons' => [
                     Icons::HTML5, Icons::CSS3, Icons::JAVASCRIPT, Icons::VUE, 
                 ],
@@ -22,7 +22,7 @@ new class extends Component
             (object)[
                 'title' => 'TheBox',
                 'description' => 'TheBox is a sleek streaming platform inspired by Netflix, offering movies and series in a simple, fast, and user-friendly interface for seamless entertainment that focus on simplicity, speed, and accessibility across devices',
-                'images' => 'images/coming_soon2.png',
+                'images' => 'images/coming_soon2.webp',
                 'icons' => [
                     Icons::HTML5, Icons::CSS3, Icons::JAVASCRIPT, Icons::REACT, Icons::LARAVEL, Icons::MYSQL, Icons::REDIS
                 ],
@@ -39,15 +39,15 @@ new class extends Component
         <h2 class="text-3xl md:text-4xl font-black mb-5">
             Featured Projects
         </h2>
-        <p class="uppercase tracking-[0.3em] text-sm md:text-base text-slate-400">
+        <p class="uppercase tracking-[0.3em] text-sm md:text-base text-slate-800">
             Clean &middot; Responsive &middot; Modern
         </p>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 py-10">
             @foreach ($projects as $project)    
-                <div class="project-card bg-[#FFFFFFB3] rounded-[32px] overflow-hidden flex flex-col justify-between border transition-transform duration-300 hover:-translate-y-[8px]" style="--i:{{ $loop->index+1 }}">
+                <div class="project-card bg-[#FFFFFFB3] rounded-[32px] overflow-hidden flex flex-col justify-between border border-gray-400 transition-transform duration-300 hover:-translate-y-[8px]" style="--i:{{ $loop->index+1 }}">
                     <div>
                         <img src="{{ asset($project->images) }}"
-                            class="h-64 w-full object-cover" />
+                            class="h-64 w-full object-cover" loading="lazy" alt="Project Images"/>
                         <div class="p-6 pb-0">
                             <h3 class="text-2xl font-bold mb-3">
                                 {{ $project->title }}

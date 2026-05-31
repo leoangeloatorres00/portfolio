@@ -23,7 +23,7 @@ new class extends Component
 
 <section id="home" class="min-h-[calc(100vh-64px)] flex items-center justify-center bg-white">
     <div class="max-7-xl p-5 md:p-8 text-center">
-        <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400 mb-6">
+        <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-800 mb-6">
             Web Developer • Software Engineer
         </p>
         

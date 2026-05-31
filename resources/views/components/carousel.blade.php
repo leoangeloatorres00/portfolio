@@ -17,7 +17,7 @@ new class extends Component
         &#10094;
     </button>
 
-    <img id="carousel-image" class="max-w-[90%] max-h-[80vh] rounded-2xl shadow-lg" />
+    <img id="carousel-image" class="max-w-[90%] max-h-[80vh] rounded-2xl shadow-lg" loading="lazy" alt="Gallery Images"/>
     
     <button onclick="nextImage()" class="absolute right-5 text-white text-4xl">
         &#10095;

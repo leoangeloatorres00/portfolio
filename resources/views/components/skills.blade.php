@@ -52,7 +52,7 @@ new class extends Component
     class="min-h-[calc(100vh-64px)] flex justify-center md:justify-start text-center md:text-left bg-white">
     <div class="max-7-xl w-full p-5">
         <div class="space-y-5 mb-5">
-            <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-400">
+            <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-800">
                 Tech Stack
             </p>
 
@@ -60,13 +60,13 @@ new class extends Component
                 Skills & Expertise
             </h1>
 
-            <p class="text-sm md:text-base text-gray-400 max-w-2xl leading-relaxed">
+            <p class="text-sm md:text-base text-gray-800 max-w-2xl leading-relaxed">
                 Technologies and tools I use to build scalable,
                 responsive, and modern web applications.
             </p>
         </div>
 
-        <div class="inline-flex rounded-xl justify-center bg-gray-100 p-1 shadow-sm border mb-8">
+        <div class="inline-flex rounded-xl justify-center bg-gray-100 p-1 shadow-sm  mb-8">
             @foreach ($navbars as $navbar)
                 <button class="category-button rounded-lg px-3 py-2 text-[10px] sm:text-xs font-medium"
                     onclick="handleCategory({{ $loop->index }})">
