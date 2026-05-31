@@ -24,6 +24,10 @@
             ;
         }
 
+        header {
+            display: -webkit-sticky!important;
+        }
+
         section {
             scroll-margin-top: 64px;
             padding: 20px;
@@ -98,7 +102,7 @@
 </head> 
 
 <body class="bg-[#f8fafc] text-slate-800">
-    <header class="sticky top-0 z-50 border-b border-slate-200 shadow-sm">
+    <header class="sticky top-0 z-50 border-b border-slate-200 shadow-sm bg-white/90 backdrop-blur">
         {{ $navbar }}
     </header>
 
