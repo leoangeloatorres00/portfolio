@@ -17,11 +17,12 @@ sed -i "s/^MAIL_USERNAME=.*/MAIL_USERNAME=$MAIL_USERNAME/" .env
 sed -i "s/^MAIL_PASSWORD=.*/MAIL_PASSWORD=$MAIL_PASSWORD/" .env
 sed -i "s/^MAIL_FROM_ADDRESS=.*/MAIL_FROM_ADDRESS=$MAIL_FROM_ADDRESS/" .env
 sed -i "s/^MAIL_FROM_NAME=.*/MAIL_FROM_NAME=$MAIL_FROM_NAME/" .env
-sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$DB_PASSWORD/" .env
 sed -i "s/^# DB_HOST=/DB_HOST=/" .env
 sed -i "s/^# DB_PORT=/DB_PORT=/" .env
 sed -i "s/^# DB_DATABASE=/DB_DATABASE=/" .env
 sed -i "s/^# DB_USERNAME=/DB_USERNAME=/" .env
+sed -i "s/^# DB_PASSWORD=/DB_PASSWORD=/" .env
+sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$DB_PASSWORD/" .env
 echo "Update variable to .env"
 
 php artisan down
