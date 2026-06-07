@@ -106,7 +106,7 @@
 </head> 
 
 <body class="bg-[#f8fafc] text-slate-800">
-    <header class="w-full z-50 border-b border-slate-200 shadow-sm bg-white backdrop-blur">
+    <header class="w-full mx-auto z-50 border-b border-slate-200 shadow-sm bg-white backdrop-blur">
         {{ $navbar }}
     </header>
 
@@ -139,7 +139,7 @@
             section.forEach(element => {
                 element.classList.toggle('min-h-[calc(100vh-64px)]', zoom >= 1);
 
-                if(zoom < 1) {
+                if(zoom < 1 || window.outerHeight < window.innerHeight) {
                     element.style.height = height;
                 } else {
                     element.style.removeProperty('height');
