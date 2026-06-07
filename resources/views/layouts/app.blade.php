@@ -126,7 +126,21 @@
 
         const section = document.querySelectorAll('section');
 
-         function handleBackdrop(element) {
+        const isMobileInDesktopMode = () => {
+            const ua = navigator.userAgent;
+            
+            const isIOSDesktopMode = 
+                ua.includes("Macintosh") && 
+                (navigator.maxTouchPoints > 1);
+
+            const isAndroidDesktopMode = 
+                ua.includes("Linux x86_64") && 
+                (navigator.maxTouchPoints > 1);
+
+            return isIOSDesktopMode || isAndroidDesktopMode;
+        }
+
+        function handleBackdrop(element) {
             element.classList.toggle('hidden');
 
             const isOpen = element.classList.contains('hidden');
@@ -137,12 +151,16 @@
             const zoom = window.devicePixelRatio;
 
             section.forEach(element => {
-                element.classList.toggle('min-h-[calc(100vh-64px)]', zoom >= 1);
-
-                if(zoom < 1 || window.outerHeight < window.innerHeight) {
+                if(isMobileInDesktopMode()) {
                     element.style.height = height;
                 } else {
-                    element.style.removeProperty('height');
+                    element.classList.toggle('min-h-[calc(100vh-64px)]', zoom >= 1);
+
+                    if(zoom < 1) {
+                        element.style.height = height;
+                    } else {
+                        element.style.removeProperty('height');
+                    }
                 }
             });
         }
