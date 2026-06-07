@@ -24,6 +24,7 @@ sed -i "s/^# DB_USERNAME=/DB_USERNAME=/" .env
 sed -i "s/^# DB_PASSWORD=/DB_PASSWORD=$DB_PASSWORD/" .env
 echo "Update variable to .env"
 
+node -v
 npm ci
 echo "Install node dependencies"
 
