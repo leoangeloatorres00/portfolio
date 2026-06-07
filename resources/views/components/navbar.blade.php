@@ -39,7 +39,7 @@ new class extends Component
         </button>
     </div>
 
-    <div id="mobile-menu" class="w-full absolute top-[65px] z-[100px] border border-md bg-white backdrop-blur shadow-sm hidden md:hidden p-5 flex flex-col gap-4">
+    <div id="mobile-menu" class="w-full absolute top-[65px] z-[100px] bg-white backdrop-blur shadow-sm hidden md:hidden p-5 flex flex-col gap-4">
         @foreach ($menus as $menu)
             <a href="{{ $menu->link }}" class="mobile-link hover:text-slate-600">
                 {{ $menu->text }}

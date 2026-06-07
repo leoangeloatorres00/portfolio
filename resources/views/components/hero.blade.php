@@ -22,7 +22,7 @@ new class extends Component
 ?>
 
 <section id="home" class="min-h-[calc(100vh-64px)] flex items-center justify-center bg-white">
-    <div class="max-7-xl p-5 md:p-8 text-center">
+    <div class="max-w-7xl p-5 md:p-8 text-center">
         <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-800 mb-6">
             Web Developer • Software Engineer
         </p>
@@ -36,6 +36,8 @@ new class extends Component
             responsive, scalable, and modern web applications
             with clean UI and efficient backend architecture.
         </p>
+        <span id="outer"></span>
+        <span id="inner"></span>
         
         <div class="flex justify-center gap-5 mb-10">
             @foreach ($icons as $icon)
@@ -56,4 +58,11 @@ new class extends Component
             </button>
         </div>
     </div>
+
+    @script
+    <script>
+        document.getElementById('outer').innerHTML = window.outerHeight
+        document.getElementById('inner').innerHTML = window.innerHeight
+    </script>
+    @endscript
 </section>

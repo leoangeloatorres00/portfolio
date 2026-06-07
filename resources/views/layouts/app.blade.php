@@ -13,7 +13,7 @@
     
     <title>{{ $title ?? 'Portfolio' }}</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    @vite('resources/css/app.css')
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
@@ -106,7 +106,7 @@
 </head> 
 
 <body class="bg-[#f8fafc] text-slate-800">
-    <header class="z-50 border-b border-slate-200 shadow-sm bg-white backdrop-blur">
+    <header class="w-full z-50 border-b border-slate-200 shadow-sm bg-white backdrop-blur">
         {{ $navbar }}
     </header>
 
@@ -137,8 +137,13 @@
             const zoom = window.devicePixelRatio;
 
             section.forEach(element => {
-                element.classList.toggle(`min-h-[${height}]`, zoom < 1)
-                element.classList.toggle('min-h-[calc(100vh-64px)]', zoom >= 1)
+                element.classList.toggle('min-h-[calc(100vh-64px)]', zoom >= 1);
+
+                if(zoom < 1) {
+                    element.style.height = height;
+                } else {
+                    element.style.removeProperty('height');
+                }
             });
         }
 

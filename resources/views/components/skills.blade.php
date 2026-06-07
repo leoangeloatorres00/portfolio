@@ -49,8 +49,8 @@ new class extends Component
 ?>
 
 <section id="skills"
-    class="min-h-[calc(100vh-64px)] flex justify-center md:justify-start text-center md:text-left bg-white">
-    <div class="max-7-xl w-full p-5">
+    class="min-h-[calc(100vh-64px)] flex items-center justify-center md:justify-start text-center md:text-left bg-white">
+    <div class="max-w-7xl mx-auto w-full p-5">
         <div class="space-y-5 mb-5">
             <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-slate-800">
                 Tech Stack
