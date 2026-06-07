@@ -36,9 +36,6 @@ new class extends Component
             responsive, scalable, and modern web applications
             with clean UI and efficient backend architecture.
         </p>
-        {{-- This is for testing of desktop view in mobile --}}
-        <span id="outer"></span>
-        <span id="inner"></span>
         
         <div class="flex justify-center gap-5 mb-10">
             @foreach ($icons as $icon)
@@ -60,10 +57,4 @@ new class extends Component
         </div>
     </div>
 
-    @script
-    <script>
-        document.getElementById('outer').innerHTML = window.outerHeight
-        document.getElementById('inner').innerHTML = window.innerHeight
-    </script>
-    @endscript
 </section>
