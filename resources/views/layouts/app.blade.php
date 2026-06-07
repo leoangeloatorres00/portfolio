@@ -153,9 +153,10 @@
 
             section.forEach(element => {
                 if(isMobileInDesktopMode()) {
-                    document.getElementById('isMobileInDesktopMode').innerHTML = "mobile desktop mode"
+                    document.getElementById('isMobileInDesktopMode').innerHTML = `mobile desktop mode ${window.outerHeight/2}px`
+                    element.classList.remove('min-h-[calc(100vh-64px)]');
                     
-                    element.style.height = window.outerHeight/2 + 'px';
+                    element.style.height = `${window.outerHeight/2}px`;
                 } else {
                     document.getElementById('isMobileInDesktopMode').innerHTML = "no mobile desktop mode"
 
