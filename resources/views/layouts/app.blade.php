@@ -110,13 +110,14 @@
         {{ $navbar }}
     </header>
 
-    <main class="container w-full mx-auto ">
+    <main class="container w-full mx-auto">
         {{ $content }} 
     </main>
 
     <footer class="border-t border-slate-200 py-6 bg-white/80 backdrop-blur-xl">
         <div class="mx-auto max-w-7xl px-6 text-center text-sm text-slate-500">
             &copy; {{ now()->year }} Portfolio by {{ config('app.owner') }}. All rights reserved.
+            <span id="isMobileInDesktopMode"></span>
         </div>
     </footer>
 
@@ -152,8 +153,12 @@
 
             section.forEach(element => {
                 if(isMobileInDesktopMode()) {
+                    document.getElementById('isMobileInDesktopMode').innerHTML = "mobile desktop mode"
+                    
                     element.style.height = height;
                 } else {
+                    document.getElementById('isMobileInDesktopMode').innerHTML = "no mobile desktop mode"
+
                     element.classList.toggle('min-h-[calc(100vh-64px)]', zoom >= 1);
 
                     if(zoom < 1) {
