@@ -155,7 +155,7 @@
                 if(isMobileInDesktopMode()) {
                     document.getElementById('isMobileInDesktopMode').innerHTML = "mobile desktop mode"
                     
-                    element.style.height = height;
+                    element.style.height = window.outerHeight/2 + 'px';
                 } else {
                     document.getElementById('isMobileInDesktopMode').innerHTML = "no mobile desktop mode"
 
