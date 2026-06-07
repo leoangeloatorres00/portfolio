@@ -27,7 +27,21 @@ echo "Update variable to .env"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 node -v
-npm ci
+echo "Verify Node Version"
+
+CURRENT_HASH=$(md5sum package-lock.json | cut -d' ' -f1)
+
+if [ -f ".package-lock.hash" ] && [ "$(cat .package-lock.hash)" = "$CURRENT_HASH" ] && [ -d "node_modules" ]; then
+  echo "package-lock.json unchanged and node_modules exists. Skipping npm ci."
+else
+  echo "Changes detected or cache missing. Running npm ci..."
+  
+  # Install exact dependencies
+  npm ci
+  
+  # Save the new hash for the next CI/CD run
+  echo "$CURRENT_HASH" > .package-lock.hash
+fi
 echo "Install node dependencies"
 
 npm run build
