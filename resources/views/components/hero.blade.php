@@ -36,6 +36,7 @@ new class extends Component
             responsive, scalable, and modern web applications
             with clean UI and efficient backend architecture.
         </p>
+        {{-- This is for testing of desktop view in mobile --}}
         <span id="outer"></span>
         <span id="inner"></span>
         
