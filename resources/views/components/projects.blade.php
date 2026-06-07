@@ -34,8 +34,8 @@ new class extends Component
 };
 ?>
 
-<section id="projects" class="min-h-screen flex items-center justify-center text-center">
-    <div class="max-7-xl w-full p-5">
+<section id="projects" class="min-h-[calc(100vh-64px)] flex items-center justify-center text-center">
+    <div class="max-w-7xl w-full p-5">
         <h2 class="text-3xl md:text-4xl font-black mb-5">
             Featured Projects
         </h2>

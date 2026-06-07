@@ -24,6 +24,12 @@ sed -i "s/^# DB_USERNAME=/DB_USERNAME=/" .env
 sed -i "s/^# DB_PASSWORD=/DB_PASSWORD=$DB_PASSWORD/" .env
 echo "Update variable to .env"
 
+npm ci
+echo "Install node dependencies"
+
+npm run build
+echo "Build assets"
+
 php artisan down
 echo "Putting the application into maintenance mode..."
 

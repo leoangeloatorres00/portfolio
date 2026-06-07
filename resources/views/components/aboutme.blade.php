@@ -19,7 +19,7 @@ new class extends Component
 ?>
 
  <section id="about" class="min-h-[calc(100vh-64px)] flex items-center justify-center">
-    <div class="max-7-xl p-5">
+    <div class="max-w-7xl p-5">
         <div class="grid lg:grid-cols-2 gap-10">
             <div id="profile"
                 class="relative hidden lg:block text-center mx-auto fade-item fade-delay fade-left">
