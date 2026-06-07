@@ -45,8 +45,8 @@ echo "Kill other worker before start a new..."
 php artisan livewire:publish --assets
 echo "Publish livewire assets"
 
-sudo chown -R $USER:$USER storage bootstrap/cache
-chmod -R 775 storage bootstrap/cache
+sudo chown -R $USER:www-data storage bootstrap/cache
+sudo chmod -R 775 storage bootstrap/cache
 echo "Directory permissions"
 
 php artisan optimize:clear
