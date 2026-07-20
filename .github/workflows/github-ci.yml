@@ -53,6 +53,9 @@ jobs:
             echo "Optimize application..."
             php artisan optimize
 
+            echo "Run the queue worker..."
+            nohup php artisan queue:work > /dev/null 2>&1 &
+
             echo "Restart queue..."
             php artisan queue:restart
 
