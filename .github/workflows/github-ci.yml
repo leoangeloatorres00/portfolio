@@ -1,93 +1,59 @@
-name: Deploy Porfolio
+name: Deploy Portfolio
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+
+  workflow_dispatch:
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup PHP with PECL extension
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.4"
-          extensions: mbstring, bcmath, ctype, fileinfo, json, tokenizer, xml, pdo, pdo_mysql, openssl, curl, zip, imagick, swoole
-
-      - name: Cache Composer dependencies
-        uses: actions/cache@v4
-        with:
-          path: vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-
-      - name: Copy .env file
-        run: |
-          cp .env.example .env
-
-      - name: Install dependencies
-        run: |
-          composer install -q --no-ansi --no-interaction --no-scripts --no-progress
-
-      - name: Generate application key
-        run: |
-          php artisan key:generate
-
-      - name: Install Node dependencies
-        run: npm ci
-
-      - name: Build assets with Vite
-        run: npm run build
-
-      - name: Directory permissions
-        run: |
-          sudo chown -R $USER:$USER storage bootstrap/cache
-          chmod -R 775 storage bootstrap/cache
-
-      - name: Run tests
-        run: |
-          php artisan test
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          clean: true
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Deployment to Server via SSH
-        if: github.ref == 'refs/heads/main'
-        uses: appleboy/ssh-action@v1.0.3
-        env:
-          APP_NAME: ${{ secrets.APP_NAME }}
-          APP_OWNER: ${{ secrets.APP_OWNER }}
-          DB_CONNECTION: ${{ secrets.DB_CONNECTION }}
-          MAIL_MAILER: ${{ secrets.MAIL_MAILER }}
-          MAIL_HOST: ${{ secrets.MAIL_HOST }}
-          MAIL_PORT: ${{ secrets.MAIL_PORT }}
-          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
-          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-          MAIL_ENCRYPTION: ${{ secrets.MAIL_ENCRYPTION }}
-          MAIL_FROM_ADDRESS: ${{ secrets.MAIL_FROM_ADDRESS }}
-          MAIL_FROM_NAME: ${{ secrets.MAIL_FROM_NAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: APP_NAME,APP_OWNER,DB_CONNECTION,MAIL_MAILER,MAIL_HOST,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,MAIL_ENCRYPTION,MAIL_FROM_ADDRESS,MAIL_FROM_NAME,DB_PASSWORD
+          port: 22
+
           script: |
             cd /var/www/portfolio
-            git pull origin main
-            sudo chmod +x deploy.sh
-            ./deploy.sh main
-            sudo chmod -x deploy.sh
+
+            echo "Pull latest code..."
+            git fetch origin
+            git reset --hard origin/main
+
+            echo "Install Composer dependencies..."
+            composer install --no-dev --prefer-dist --optimize-autoloader
+
+            echo "Load the nvm"
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            echo "Install and use node 22 version..."
+            nvm install 22
+            nvm use 22
+
+            echo "Install Node dependencies..."
+            npm install
+
+            echo "Build Vue..."
+            npm run build
+
+            echo "Run migrations..."
+            php artisan migrate --force
+
+            echo "Clear caches..."
+            php artisan optimize:clear
+
+            echo "Optimize application..."
+            php artisan optimize
+
+            echo "Restart queue..."
+            php artisan queue:restart
+
+            echo "Deployment completed!"
